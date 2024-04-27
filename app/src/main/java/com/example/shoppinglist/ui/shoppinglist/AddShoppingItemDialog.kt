@@ -15,9 +15,9 @@ class AddShoppingItemDialog(context:Context, private var addDialogListener: AddD
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dialogue_add_shopping_item)
 
-        findViewById<TextView>(R.id.tvAdd)?.setOnClickListener {
-            val name = findViewById<EditText>(R.id.etName)?.text.toString()
-            val amount = findViewById<EditText>(R.id.etAmount)?.text.toString()
+        findViewById<TextView>(R.id.tvAdd)!!.setOnClickListener {
+            val name = findViewById<EditText>(R.id.etName)!!.text.toString()
+            val amount = findViewById<EditText>(R.id.etAmount)!!.text.toString()
 
             if(name.isEmpty() or amount.isEmpty()) {
                 Toast.makeText( context,"Please Enter All Information", Toast.LENGTH_SHORT).show()
@@ -28,7 +28,7 @@ class AddShoppingItemDialog(context:Context, private var addDialogListener: AddD
             addDialogListener.onAddButtonClicked(item)
             dismiss()
         }
-        findViewById<TextView>(R.id.tvCancel)?.setOnClickListener {
+        findViewById<TextView>(R.id.tvCancel)!!.setOnClickListener {
             cancel()
         }
 

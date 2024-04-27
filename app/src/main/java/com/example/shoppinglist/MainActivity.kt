@@ -1,4 +1,4 @@
-package com.example.shoppinglist.ui.shoppinglist
+package com.example.shoppinglist
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,12 +11,16 @@ import com.example.shoppinglist.data.db.ShoppingDatabase
 import com.example.shoppinglist.data.db.entities.ShoppingItem
 import com.example.shoppinglist.data.repositories.ShoppingRepository
 import com.example.shoppinglist.other.ShoppingItemAdapter
+import com.example.shoppinglist.ui.shoppinglist.AddDialogListner
+import com.example.shoppinglist.ui.shoppinglist.AddShoppingItemDialog
+import com.example.shoppinglist.ui.shoppinglist.ShoppingViewModel
+import com.example.shoppinglist.ui.shoppinglist.ShoppingViewModelFactory
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class ShoppingActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_shopping)
+        setContentView(R.layout.activity_main)
 
         val database = ShoppingDatabase(this)
         val repository = ShoppingRepository(database)
@@ -36,7 +40,7 @@ class ShoppingActivity : AppCompatActivity() {
 
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
             AddShoppingItemDialog(this,
-                object : AddDialogListner{
+                object : AddDialogListner {
                     override fun onAddButtonClicked(item: ShoppingItem) {
                         viewModel.upsert(item)
                     }
