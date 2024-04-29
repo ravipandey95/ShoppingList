@@ -10,13 +10,13 @@ import com.example.shoppinglist.data.db.entities.ShoppingItem
 
 @Dao
 interface ShoppingDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE) // insert or update the the existing item
     fun upsert (item : ShoppingItem)
 
     @Delete
-    fun delete (item : ShoppingItem)
+    fun delete (item : ShoppingItem) // delete the item
 
-    @Query( "SELECT * FROM shopping_items" )
+    @Query( "SELECT * FROM shopping_items" ) // query to get all items from table
     fun getAllShoppingItems(): LiveData<List<ShoppingItem>>
 
 }

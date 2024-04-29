@@ -15,12 +15,13 @@ abstract class ShoppingDatabase: RoomDatabase(){
     abstract fun getShoppingDao() : ShoppingDao //getting the dao object
 
     companion object{
-        @Volatile
+        @Volatile // makes sure only one thread is written
         private var instance: ShoppingDatabase? = null
         private val LOCK = Any()
+
         operator fun invoke(context: Context) = instance ?: synchronized(LOCK) {
             instance ?: createDatabase(context).also { instance = it }
-        }
+        } //operator fun is used any time we use ShoppingDatabase()
 
         private fun createDatabase(context: Context)=
             Room.databaseBuilder(context.applicationContext,
