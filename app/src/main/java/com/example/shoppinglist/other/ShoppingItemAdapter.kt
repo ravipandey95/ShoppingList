@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.shoopinglist.R
+import com.example.shoppinglist.R
 import com.example.shoppinglist.data.db.entities.ShoppingItem
 import com.example.shoppinglist.ui.shoppinglist.ShoppingViewModel
 
